@@ -28,6 +28,23 @@ class UMKMController extends Controller
             'data' => null
         ], 400);
     }
+
+    public function indexByUser($id_user)
+    {
+        $umkm = umkm::find($id_user);
+
+        if(!is_null($umkm)) {
+            return response([
+                'message' => 'Retrieve UMKM Success',
+                'data' => $umkm
+            ], 200);
+        }
+
+        return response([
+            'message' => 'UMKM Not Found',
+            'data' => null
+        ], 404);
+    }
     
     //untuk show umkm berdasarkan pencarian
     public function show($id)

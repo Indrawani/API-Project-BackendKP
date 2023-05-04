@@ -20,6 +20,7 @@ Route::post('login','Api\AuthController@login');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('umkm','Api\UMKMController@index');
     Route::get('umkm/{id}', 'Api\UMKMController@show');
+    Route::get('umkmByUser/{id_user}', 'Api\UMKMController@indexByUser');
     Route::post('umkm', 'Api\UMKMController@store');
     Route::put('umkm/{id}', 'Api\UMKMController@update');
     Route::delete('umkm/{id}','Api\UMKMController@destroy');
