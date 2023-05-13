@@ -31,7 +31,7 @@ class UMKMController extends Controller
 
     public function indexByUser($id_user)
     {
-        $umkm = umkm::find($id_user);
+        $umkm = umkm::where($id_user, '>', 100)->get();
 
         if(!is_null($umkm)) {
             return response([
@@ -135,6 +135,7 @@ class UMKMController extends Controller
             'nama_umkm' => 'required|max:60',
             'profil_url' => 'required',
             'gambar_umkm' => 'required',
+            'id_user' => 'required',
             'detail_umkm' => 'required',
             'alamat_umkm' => 'required',
             'motto_umkm' => 'required',
@@ -150,6 +151,7 @@ class UMKMController extends Controller
         $umkm->nama_umkm = $updateData['nama_umkm'];
         $umkm->profil_url = $updateData['profil_url'];
         $umkm->gambar_umkm = $updateData['gambar_umkm'];
+        $umkm->id_user = $updateData['id_user'];
         $umkm->detail_umkm = $updateData['detail_umkm'];
         $umkm->alamat_umkm = $updateData['alamat_umkm'];
         $umkm->motto_umkm = $updateData['motto_umkm'];

@@ -59,4 +59,21 @@ class AuthController extends Controller
             'access_token' => $token
         ]);
     }
+
+        //function untuk profil user
+    public function getUser($id)
+    {
+        $user = User::find($id);
+        if(!is_null($user)) {
+            return response([
+                'message' => 'Retrieve User Success',
+                'data' => $user
+            ], 200);
+        }
+
+        return response([
+            'message' => 'User Not Found',
+            'data' => null
+        ], 404);
+    }
 }

@@ -18,6 +18,7 @@ Route::post('register', 'Api\AuthController@register');
 Route::post('login','Api\AuthController@login');
 
 Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('user/{id}', 'Api\AuthController@getUser'); //route API baru untuk profil user
     Route::get('umkm','Api\UMKMController@index');
     Route::get('umkm/{id}', 'Api\UMKMController@show');
     Route::get('umkmByUser/{id_user}', 'Api\UMKMController@indexByUser');
